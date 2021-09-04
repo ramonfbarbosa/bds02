@@ -1,7 +1,5 @@
 package com.devsuperior.bds02.services;
 
-import java.util.Optional;
-
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
@@ -13,8 +11,6 @@ import com.devsuperior.bds02.entities.City;
 import com.devsuperior.bds02.entities.Event;
 import com.devsuperior.bds02.repositories.EventRepository;
 import com.devsuperior.bds02.services.exceptions.ResourceNotFoundException;
-import com.devsuperior.dscatalog.dto.UserDTO;
-import com.devsuperior.dscatalog.entities.User;
 
 @Service
 public class EventService {
