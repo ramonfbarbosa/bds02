@@ -23,23 +23,17 @@ public class EventService {
 	
 	@Transactional
 	public EventDTO update(Long id, EventDTO dto) {
-		try {
 			Optional<Event> obj = repository.findById(id);
 			Event entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id not found" + id));
 	        copyDtoToEntity(dto, entity);
 	        entity = repository.save(entity);
 	        return new EventDTO(entity);
 		}
-		catch(EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
-		}
-	}
 	
 	private void copyDtoToEntity(EventDTO dto, Event entity) {
-		entity.setId(dto.getId());
 		entity.setName(dto.getName());
 		entity.setDate(dto.getDate());
 		entity.setUrl(dto.getUrl());
-		entity.setCity(new City(dto.getCityId(), dto.getName()));
+		entity.setCity(new City(dto.getCityId(), null));
 	}
 }
